@@ -1,0 +1,79 @@
+<div class="container-fluid outerdiv" >
+
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#"><b>Angular2</b> <span class="span-style">Movie Browser</span></a>
+      </div>
+    </div>
+  </nav>
+
+ 
+
+  <div class="animated zoomInRight">
+    <div class="input-group search-bar">
+            <input type="text"  id="get-movie" [(ngModel)]="search"  class="form-control" placeholder="Enter full movie name" autofocus />
+             <span class="input-group-addon bar-style" (click)="getMovie()"><i class="glyphicon glyphicon-search"></i></span>
+      </div>
+
+    <div id="main-info" class="col-md-8">
+    
+      <div *ngIf="movie != undefined && movie.Response == 'True'">
+        <img src="{{movie.Poster == 'N/A'? 'http://placehold.it/150x220&text=N/A' : movie.Poster}}" class="thumbnail animated flip movie-poster">
+
+        <span class="span-outer">
+          <a href="http://imdb.com/title/{{ movie.imdbID }}" target="_blank">{{ movie.Title }}</a>
+        </span>, {{ movie.Year }}
+
+        <p><strong>Released on:</strong> {{ movie.Released }} ({{ movie.Runtime }})</p>
+
+        <p>{{ movie.Plot }}</p>
+
+        <div class="outer-p">
+          <div class="inner-p">
+            <label class="label label-primary">Directors :</label> {{ movie.Director }}
+          </div>
+          <div class="inner-p">
+            <label class="label label-primary">Actors :</label> {{ movie.Actors }}
+          </div>
+          <div class="inner-p">
+            <label class="label label-primary">Genre :</label> {{ movie.Genre }}
+          </div> 
+        </div>
+
+        <p class="outer-p-2">Ratings:
+          <br>
+          <strong>IMDb Rating</strong>: <span class="label label-success">{{ movie.imdbRating }}</span>
+          <br>
+          <strong>Rotten Tomatoes</strong>: <span class="label label-success">{{ movie.tomatoRating }}</span>
+        </p>
+
+        <p class="outer-p-3">
+          <a href="https://www.youtube.com/results?search_query={{ movie.Title }}" target="_blank" class="btn btn-default btn-xs btn-info">Watch Trailers!</a>
+          <span class="divider"></span>
+          <a href="http://subscene.com/subtitles/title?q={{ movie.Title }}" target="_blank" class="btn btn-default btn-xs btn-info">Get Subtitles!</a>
+          <span class="divider"></span>
+          <a href="http://www.theost.com/search/custom/?key={{ movie.Title }}" target="_blank" class="btn btn-default btn-xs btn-info">Hear Soundtracks!</a>
+          <span class="divider"></span>
+          <a href="http://www.amazon.in/s/ref=nb_sb_noss_1?url=search-alias%3Ddvd&field-keywords={{ movie.Title }}" target="_blank" class="btn btn-default btn-xs btn-info">Buy this movie!</a>
+        </p>
+      </div>
+
+      <div *ngIf="movie != undefined && movie.Response == 'False'">
+        No results found.
+      </div>
+    </div>
+    <div id="related-results" class="col-md-4 animated bounce related-results">
+      <div *ngIf="movieList != undefined && movieList.Response == 'True'" >
+        Related Results:
+        <hr>
+
+        <ul class="rel-results">
+          <li *ngFor="let m of movieList.Search">
+            <a href="#" (click)="getNew(m.Title)">{{ m.Title }}</a>, {{ m.Year }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

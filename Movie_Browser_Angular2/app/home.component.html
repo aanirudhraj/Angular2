@@ -1,0 +1,67 @@
+<div class="container-fluid outerdiv">
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#"><b>Fastr</b> <span class="span-style">Movie Browser</span></a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="animated zoomInRight">
+        <div class="input-group search-bar">
+            <input type="text"  id="get-movie" [(ngModel)]="search" class="form-control" placeholder="Enter full movie name" autofocus >
+            <button id="get-movie" (click)="getMovie()">Get Movie</button>
+<span class="input-group-addon bar-style"><i class="glyphicon glyphicon-search"></i></span>
+</div>
+
+<div id="main-info" class="col-md-8">
+    
+    <div *ngIf="movie.Response==='True'">
+        <img [src]="movie.Poster" class="thumbnail animated flip movie-poster">
+
+        <span class="span-outer">
+          <a href="http://imdb.com/title/{{ movie.imdbID }}" target="_blank">{{ movie.Title }}</a>
+        </span>, {{ movie.Year }}
+
+        <p><strong>Released on:</strong> {{ movie.Released }} ({{ movie.Runtime }})</p>
+
+        <p>{{ movie.Plot }}</p>
+
+        <p class="outer-p">
+          <div class="inner-p">
+                <label><strong>Directors:</strong></label> {{ movie.Director }}
+            </div>
+            <div class="inner-p">
+                <label><strong>Actors:</strong></label> {{ movie.Actors }}
+            </div>
+            <div class="inner-p">
+                <label><strong>Genre:</strong></label> {{ movie.Genre }}
+            </div> 
+        </p>
+
+        <p class="outer-p-2">Ratings:
+            <br>
+            <strong>IMDb Rating</strong>: <span class="label label-success">{{ movie.imdbRating }}</span>
+            <br>
+            <strong>Rotten Tomatoes</strong>: <span class="label label-success">{{ movie.imdbRating }}</span>
+        </p>
+
+        <p class="outer-p-3">
+            <a href="https://www.youtube.com/results?search_query={{ movie.Title }}" target="_blank" class="btn btn-default btn-xs btn-info">Watch Trailers!</a>
+            <span class="divider"></span>
+            <a href="http://subscene.com/subtitles/title?q={{ movie.Title }}" target="_blank" class="btn btn-default btn-xs btn-info">Get Subtitles!</a>
+            <span class="divider"></span>
+            <a href="http://www.theost.com/search/custom/?key={{ movie.Title }}" target="_blank" class="btn btn-default btn-xs btn-info">Hear Soundtracks!</a>
+            <span class="divider"></span>
+            <a href="http://www.amazon.in/s/ref=nb_sb_noss_1?url=search-alias%3Ddvd&field-keywords={{ movie.Title }}" target="_blank"
+                class="btn btn-default btn-xs btn-info">Buy this movie!</a>
+        </p>
+    </div>
+
+    <div *ngIf="movie.Response==='False'">
+        No results found.
+    </div>
+</div>
+</div>
+</div>
