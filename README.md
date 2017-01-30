@@ -1,17 +1,48 @@
 # Angular2-Movie Browser - omdbAPI
 
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.21.
+This Application is built on Angular2 Framework which uses it's HTTP Client to fetch a data from a remote OMDB API. This Movie Browser is used to fetch a variety of different information about any movie you care to enter. In addition to Angular2, MovieBrowser is is built using <a href="https://getbootstrap.com" target="_blank" >
+Bootstrap</a> for styling and <a href="https://daneden.github.io/animate.css/" target="_blank" >
+Animate.css</a> for some cool animations.
 
-## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Prerequisites
 
-## Code scaffolding
+Node.js and npm are essential to Angular development. 
+    
+<a href="https://docs.npmjs.com/getting-started/installing-node" target="_blank" title="Installing Node.js and updating npm">
+Get it now</a> if it's not already installed on your machine.
+ 
+**Verify that you are running at least node `v4.x.x` and npm `3.x.x`**
+by running `node -v` and `npm -v` in a terminal/console window.
+Older versions produce errors.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class`.
+## Create a new project 
 
-## Build
+Clone this repo into new project folder (e.g., `my-proj`).
+```shell
+git clone https://github.com/aanirudhraj/Angular2-MovieBrowser-OMDB-.git  my-proj
+cd my-proj
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+## Install npm packages
+
+Once you are in my-proj(for this example) directory following commands should be run to install npm.
+
+> See npm and nvm version notes above
+
+Install the npm packages described in the `package.json` and verify that it works:
+
+```shell
+npm install
+npm start
+```
+
+The `npm start` command first compiles the application, 
+then simultaneously re-compiles and runs the `lite-server`.
+Both the compiler and the server watch for file changes.
+
+Shut it down manually with `Ctrl-C`.
+
+Now you can Navigate to `http://localhost:3000/` on any browser, you can see my MovieBrowser application loads. if you make any changes to my source code saving the code will automatically load the application to browser. 
 
 ## Running unit tests
 
@@ -19,7 +50,7 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 ## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Run `ng run e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 Before running the tests make sure you are serving the app via `ng serve`.
 
 ## Deploying to Github Pages
