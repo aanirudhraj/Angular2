@@ -19,8 +19,9 @@ Older versions produce errors.
 
 Clone this repo into new project folder (e.g., `my-proj`).
 ```shell
-git clone https://github.com/aanirudhraj/Angular2-MovieBrowser-OMDB-.git  my-proj
+git clone https://github.com/aanirudhraj/Angular2-MovieBrowserOMDB.git  my-proj
 cd my-proj
+cd Movie_Browser_Angular2
 ```
 
 ## Install npm packages
